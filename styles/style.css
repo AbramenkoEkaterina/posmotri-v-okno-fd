@@ -16,6 +16,9 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex; /*сделали флексом*/
+  justify-content: center; /*расположили контент по центру по горизонтали*/
+  align-items: center; /*по вертикали*/
 }
 
 h1,
@@ -48,4 +51,86 @@ ol {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 711px 399px;
+  grid-template-areas: "result details";
+  gap: 30px; /*задали расстояние между колонками*/
+  align-items: end; /* выровняли элементы по вертикальной оси, прижали их к низу контейнера*/
+  width: 100%;
+  margin: 160px 30px 0 30px;
+}
+
+.result {
+  grid-area: result; /*дали название области 1/2*/
+}
+
+.search-form { 
+  display: flex; /*сделали флексом чтоб*/
+  flex-direction: row; /*расположить элементы по горизонтали*/
+  gap:40px; /*задали расстояния между кнопками*/
+  align-items: flex-end; /*прижали к началу контейнера по вертикали*/
+  width: 100%;
+}
+
+.content__list-container {
+  height: 298px; /*задали высоту*/
+  overflow-y: auto; /*добавили скролл*/
+  /*margin-top: auto;*/
+  position: relative; /*вырываем видео из потока позиционированием для родителя*/
+}
+
+.content__details {
+  grid-area: details; /*дали название области 2/2*/
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between; под вопросом*/
+  width: 100%; /*растянули на всю высоту/ширину*/
+  height: 100%;
+  min-height: 386px;
+}
+
+.result__video-container {
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+  overflow: hidden; /* обрежет лишнее. если вдруг что то вылезет*/
+  position: relative; /*вырываем видео из потока позиционированием для родителя*/
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* заполнит контейнер полностью, сохраняя пропорции */
+  object-position: center; /*рекомендуется при использовании  obgect-position*/
+  display: block;    /* убираем лишние отступы */
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column; /* сделали флекс контейнером с колонкой, чтоб задать гэп между элементами*/
+  gap: 30px;
+}
+
+.content__video-card {
+  display: grid;
+  grid-template-columns: 1fr 194px;
+  align-items: start;
+}
+
+.content__video-card-thumbnail {
+  width: 100%;
+  height: 103px;
+  object-fit: cover; /* заполнит контейнер полностью, сохраняя пропорции */
+  object-position: center; /*рекомендуется при использовании  obgect-position*/
+}
+
+.content__video-card-description-container {
+  flex-grow: 1; /*занимает все оставшееся пространсво, а видео задаем жесткие рамки*/
+}
+
+.title {
+  margin-bottom: 26px;
 }
