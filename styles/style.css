@@ -13,7 +13,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
   display: flex; /*сделали флексом*/
@@ -50,7 +50,7 @@ ol {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 
 .content {
@@ -67,12 +67,14 @@ ol {
   grid-area: result; /*дали название области 1/2*/
 }
 
-.search-form { 
+.search-form {
   display: flex; /*сделали флексом чтоб*/
   flex-direction: row; /*расположить элементы по горизонтали*/
-  gap:40px; /*задали расстояния между кнопками*/
+  gap: 40px; /*задали расстояния между кнопками*/
   align-items: flex-end; /*прижали к началу контейнера по вертикали*/
   width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .content__list-container {
@@ -105,7 +107,7 @@ ol {
   height: 100%;
   object-fit: cover; /* заполнит контейнер полностью, сохраняя пропорции */
   object-position: center; /*рекомендуется при использовании  obgect-position*/
-  display: block;    /* убираем лишние отступы */
+  display: block; /* убираем лишние отступы */
 }
 
 .content__list {
@@ -116,7 +118,7 @@ ol {
 
 .content__video-card {
   display: grid;
-  grid-template-columns: 1fr 194px;
+  grid-template-columns: 196px 194px; /*задала значения дляя секций, так как если первой не задать ширину не сработает троеточие, когда текст не влезает, и для видео ограничили размер*/
   align-items: start;
 }
 
@@ -133,4 +135,246 @@ ol {
 
 .title {
   margin-bottom: 26px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  text-transform: uppercase;
+  padding-top: 6px;
+  padding-left: 4px;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__card-link {
+  display: block;
+  text-decoration: none; /*отменили подчеркивание ссылок у названий городов*/
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-form__fieldset-title {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  margin-bottom: 7.5px;
+}
+
+.content__video-card-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+  text-wrap: nowrap; /* запретили переносить строки */
+  overflow: hidden; /* скрыли лишнее */
+  text-overflow: ellipsis; /* добавляем "…" */
+}
+
+.content__video-card-description {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* число строк, после которых обрезать */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ul li:last-child {
+  margin-bottom: 30px; /* последней карточке дали отступ */
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid white;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: inherit;
+  line-height: 21.6px;
+  background-color: transparent;
+  outline: none; /* убираем стандартную обводку в фокусе */
+  cursor: pointer; /*кликабельность*/
+}
+
+button:hover {
+  text-decoration: underline; /*при наведении кнопка подчеркивается*/
+}
+
+button:active {
+  background-color: rgba(84, 80, 80, 1); /* активное состояние цвет */
+}
+
+button:focus-visible {
+  outline: 1px solid white; /*обводка при фокусе с клавиатуры*/
+  outline-offset: 1px;
+}
+
+.search-form__fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.search-form__submit-button {
+  align-self: end;
+  padding: 6px 73.5px; /*стилизовали кнопку поиска*/
+  /*width: 100%;*/
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content; /*ограничивает ширину по содержимому, чтоб не растянуть label*/
+  cursor: pointer;
+}
+
+/*поле ввода текста город*/
+.search-form__textfield {
+  min-width: 225px;
+  border-top: solid 1px white;
+  border-right: none;
+  border-bottom: solid 1px white;
+  border-left: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  /*line-height: 21.6px;*/
+  background-color: transparent;
+}
+
+.search-form__textfield:focus {
+  outline: none; /*сбросить обводку в состоянии фокуса*/
+  appearance: none; /* сброс браузерного оформления */
+}
+
+/* фокус появляется только при клавиатурной навигации на полле ввода*/
+.search-form__label:has(:focus-visible) {
+  outline: solid 1px white;
+  outline-offset: 2px; /*отступ до обводки*/
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.search-form__checkbox {
+  border: 1px solid white; /*обычное состояние обводка*/
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  align-items: center; /* выравниваем квадрат по центру*/
+  justify-content: center;
+  position: relative;
+  width: 19px;
+  height: 19px;
+  border: 1px solid white;
+}
+
+.search-form__pseudo-checkbox::after {
+  content: "";
+  width: 15px; /*маленький белый квадрат при выборе*/
+  height: 15px;
+  background-color: white;
+  display: none;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  display: block; /*белый квадрат при выборе чек бокса*/
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  height: 27px;
+  gap: 5px;
+}
+
+.search-form__label-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
+  background-color: transparent;
+  border-top: 1px solid white;
+  border-right: none;
+  border-bottom: 1px solid white;
+  border-left: none;
+  appearance: none; /* убираем дефолтное оформление */
+  outline: none; /* убираем стандартную обводку в фокусе */
+}
+
+/*когда текстовое поле инпут в фокусе, именно с клавиатуры обводится весь лейб при этом станартную обводку мы сбрасываем у текстового поля в фокусе*/
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid white;
+  outline-offset: 2px;
+}
+/*
+.search-form__label:has(.search-form__pseudo-checkbox:focus-visible) {
+  outline: 1px solid white;
+  outline-offset: 2px;
+}*/
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline; /*при наведении на чекбокс, на любую точку лейбла, у текста появлялось подчёркивание*/
+}
+
+.more-button {
+  width: 100%;
+  padding: 6px 142px;
+}
+
+.content__card-link_current {
+  background-color: rgba(84, 80, 80, 1);
+}
+
+.content__video-card:hover .content__video-card-title,
+.content__video-card:hover .content__video-card-description {
+  text-decoration: underline;
+} /*когда наводим на карточку, будет подчеркиваться заголовок и описание этой карточки*/
+
+.content__video-card:focus-visible {
+  outline: 1px solid #ffffff;
+  outline-offset: 1px;
+}
+
+.content__video-card:hover {
+  text-decoration: underline;
+}
+
+.content__video-card:active {
+  background-color: rgba(84, 80, 80, 1);
+}
+
+.content__list-item {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.result__video-container,
+.content__list-container {
+  position: relative;
 }
