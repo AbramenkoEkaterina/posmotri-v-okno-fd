@@ -313,7 +313,7 @@ button:focus-visible {
 }
 
 .search-form__label-text {
-  color: #ffffff;
+  color: #ffffff; /*исправила цвет*/
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
