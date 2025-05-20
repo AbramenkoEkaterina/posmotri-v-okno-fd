@@ -60,17 +60,19 @@ ol {
   gap: 30px; /*задали расстояние между колонками*/
   align-items: end; /* выровняли элементы по вертикальной оси, прижали их к низу контейнера*/
   width: 100%;
-  margin: 160px 30px 0 30px;
+  align-self: center;
+  margin-left: 30px;
+  /*margin: 30px 133px 30px 133px;*/
 }
 
 .result {
   grid-area: result; /*дали название области 1/2*/
+  margin-bottom: 2px;
 }
 
 .search-form {
   display: flex; /*сделали флексом чтоб*/
   flex-direction: row; /*расположить элементы по горизонтали*/
-  gap: 40px; /*задали расстояния между кнопками*/
   align-items: flex-end; /*прижали к началу контейнера по вертикали*/
   width: 100%;
   justify-content: space-between;
@@ -91,14 +93,12 @@ ol {
   /*justify-content: space-between; под вопросом*/
   width: 100%; /*растянули на всю высоту/ширину*/
   height: 100%;
-  min-height: 386px;
 }
 
 .result__video-container {
   width: 711px;
   height: 386px;
   margin-bottom: 16px;
-  overflow: hidden; /* обрежет лишнее. если вдруг что то вылезет*/
   position: relative; /*вырываем видео из потока позиционированием для родителя*/
 }
 
@@ -141,7 +141,6 @@ ol {
   line-height: 94%;
   text-transform: uppercase;
   padding-top: 6px;
-  padding-left: 4px;
 }
 
 .content__accent {
@@ -160,24 +159,26 @@ ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
-  margin-bottom: 7.5px;
+  margin-bottom: 5px;
 }
 
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  line-height: 30px;
+  line-height: 100%;
   text-transform: uppercase;
   text-wrap: nowrap; /* запретили переносить строки */
   overflow: hidden; /* скрыли лишнее */
   text-overflow: ellipsis; /* добавляем "…" */
+  margin-bottom: 4px;
 }
 
 .content__video-card-description {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
+  line-height: 16.5px;
   display: -webkit-box;
   -webkit-line-clamp: 4; /* число строк, после которых обрезать */
   -webkit-box-orient: vertical;
@@ -185,7 +186,7 @@ ol {
   text-overflow: ellipsis;
 }
 
-ul li:last-child {
+.content__list-item:last-child {
   margin-bottom: 30px; /* последней карточке дали отступ */
 }
 
@@ -208,8 +209,12 @@ ul li:last-child {
   font-size: inherit;
   line-height: 21.6px;
   background-color: transparent;
-  outline: none; /* убираем стандартную обводку в фокусе */
+ /* outline: none;  убираем стандартную обводку в фокусе */
   cursor: pointer; /*кликабельность*/
+}
+
+button:focus {
+  outline: none; /* убираем стандартную обводку в фокусе */
 }
 
 button:hover {
@@ -217,7 +222,8 @@ button:hover {
 }
 
 button:active {
-  background-color: rgba(84, 80, 80, 1); /* активное состояние цвет */
+  background-color: rgba(84, 80, 80, 1); /* активное состояние цвет */ 
+  text-decoration: none;
 }
 
 button:focus-visible {
@@ -233,6 +239,7 @@ button:focus-visible {
 
 .search-form__submit-button {
   align-self: end;
+  min-width: 194px;
   padding: 6px 73.5px; /*стилизовали кнопку поиска*/
   /*width: 100%;*/
 }
@@ -243,6 +250,8 @@ button:focus-visible {
   gap: 5px;
   width: fit-content; /*ограничивает ширину по содержимому, чтоб не растянуть label*/
   cursor: pointer;
+  appearance: none;
+  height: 27px;
 }
 
 /*поле ввода текста город*/
@@ -252,7 +261,7 @@ button:focus-visible {
   border-right: none;
   border-bottom: solid 1px white;
   border-left: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -274,8 +283,7 @@ button:focus-visible {
 .search-form__checkbox-list {
   display: flex;
   gap: 15px;
-  padding-bottom: 5px;
-  padding-left: 5px;
+  padding-bottom: 4px;
 }
 
 .search-form__checkbox {
@@ -304,39 +312,17 @@ button:focus-visible {
   display: block; /*белый квадрат при выборе чек бокса*/
 }
 
-.search-form__label {
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  height: 27px;
-  gap: 5px;
-}
-
 .search-form__label-text {
-  color: rgba(255, 255, 255, 0.7);
+  color: #FFFFFFB2;
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 21.6px;
   background-color: transparent;
-  border-top: 1px solid white;
-  border-right: none;
-  border-bottom: 1px solid white;
-  border-left: none;
   appearance: none; /* убираем дефолтное оформление */
   outline: none; /* убираем стандартную обводку в фокусе */
 }
 
-/*когда текстовое поле инпут в фокусе, именно с клавиатуры обводится весь лейб при этом станартную обводку мы сбрасываем у текстового поля в фокусе*/
-.search-form__label:has(.search-form__textfield:focus-visible) {
-  outline: 1px solid white;
-  outline-offset: 2px;
-}
-/*
-.search-form__label:has(.search-form__pseudo-checkbox:focus-visible) {
-  outline: 1px solid white;
-  outline-offset: 2px;
-}*/
 
 .search-form__label:hover .search-form__label-text {
   text-decoration: underline; /*при наведении на чекбокс, на любую точку лейбла, у текста появлялось подчёркивание*/
@@ -351,27 +337,25 @@ button:focus-visible {
   background-color: rgba(84, 80, 80, 1);
 }
 
-.content__video-card:hover .content__video-card-title,
-.content__video-card:hover .content__video-card-description {
-  text-decoration: underline;
-} /*когда наводим на карточку, будет подчеркиваться заголовок и описание этой карточки*/
-
-.content__video-card:focus-visible {
+.content__card-link:focus-visible {
   outline: 1px solid #ffffff;
-  outline-offset: 1px;
+  outline-offset: 1px;/
+  background-color: #545050;
 }
 
-.content__video-card:hover {
+.content__card-link:hover {
   text-decoration: underline;
 }
 
-.content__video-card:active {
+.content__card-link:active {
   background-color: rgba(84, 80, 80, 1);
+  text-decoration: none;
 }
 
 .content__list-item {
   padding-left: 3px;
   padding-right: 3px;
+  cursor: pointer;
 }
 
 .result__video-container,
